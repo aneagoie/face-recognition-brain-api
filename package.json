@@ -1,0 +1,24 @@
+{
+  "name": "face-recognition-brain-api",
+  "version": "1.0.0",
+  "description": "Final project for Udemy course",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aneagoie/face-recognition-brain-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aneagoie/face-recognition-brain-api/issues"
+  },
+  "homepage": "https://github.com/aneagoie/face-recognition-brain-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.12.5"
+  }
+}
