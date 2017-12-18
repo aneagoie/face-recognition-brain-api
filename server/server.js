@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 var bodyParser = require('body-parser')
+var cors = require('cors')
 
-let database = {
+const database = {
   users: [{
     id: '123',
     name: 'Andrei',
@@ -16,12 +17,14 @@ let database = {
   }
 }
 
+app.use(cors());
 app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/signin', (req, res) => {
-  if (req.body.email === database.users.email && req.body.password === database.secrets.hash) {
-    res.json('signed in');
+  var a = JSON.pase(req.body);
+  if (a.username === database.users[0].email && a.password === database.secrets.hash) {
+    res.send('signed in');
   } else {
     res.json('access denied');
   }
@@ -46,11 +49,17 @@ app.post('/register', (req, res) => {
     entries: 0,
     joined: new Date()
   })
-  res.json(database.users)
+  res.json(database.users[database.users.length - 1])
 })
 
 app.get('/profile/:userId', (req, res) => {
-  res.json(req.params)
+  database.users.forEach(user => {
+    if (user.id === req.params.userId) {
+      return res.json(user);
+    }
+  })
+  // res.json('no user')
+
 })
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
