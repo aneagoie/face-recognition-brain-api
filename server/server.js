@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/signin', (req, res) => {
-  var a = JSON.pase(req.body);
+  var a = JSON.parse(req.body);
   if (a.username === database.users[0].email && a.password === database.secrets.hash) {
     res.send('signed in');
   } else {
