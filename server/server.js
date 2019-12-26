@@ -3,14 +3,30 @@ const app = express()
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
+/*
+  / --> res = this is working
+  /signin --> POST = success/fail
+  /register --> POST = user
+  /profile/:userId --> GET = user
+  /image --> PUT --> user
+*/
+
 const database = {
   users: [{
-    id: '123',
-    name: 'Andrei',
-    email: 'john@gmail.com',
-    entries: 0,
-    joined: new Date()
-  }],
+      id: '123',
+      name: 'Andrei',
+      email: 'john@gmail.com',
+      entries: 0,
+      joined: new Date()
+    },
+    {
+      id: '124',
+      name: 'Juan',
+      email: 'juan@gmail.com',
+      entries: 0,
+      joined: new Date()
+    }
+  ],
   secrets: {
     users_id: '123',
     hash: 'wghhh'
@@ -19,11 +35,17 @@ const database = {
 
 app.use(cors());
 app.use(bodyParser.json());
-app.get('/', (req, res) => res.send('Hello World!'))
+//app.get('/', (req, res) => res.send('Hello World!'));
+
+app.get('/', (req, res) => {
+  res.send(database.users);
+})
 
 app.post('/signin', (req, res) => {
-  var a = JSON.parse(req.body);
-  if (a.username === database.users[0].email && a.password === database.secrets.hash) {
+  //Convert JSON into a javascript object
+  //var a = JSON.parse(req.body);
+  console.log("JSON Response: ", req.body)
+  if (req.body.username === database.users[1].email && req.body.password === database.secrets.hash) {
     res.send('signed in');
   } else {
     res.json('access denied');
@@ -43,7 +65,7 @@ app.post('/findface', (req, res) => {
 
 app.post('/register', (req, res) => {
   database.users.push({
-    id: '124',
+    id: '125',
     name: req.body.name,
     email: req.body.email,
     entries: 0,
