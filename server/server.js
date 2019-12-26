@@ -75,13 +75,32 @@ app.post('/register', (req, res) => {
 })
 
 app.get('/profile/:userId', (req, res) => {
+  let found = false;
+
   database.users.forEach(user => {
     if (user.id === req.params.userId) {
+      found = true;
       return res.json(user);
     }
   })
-  // res.json('no user')
+  if (!found) {
+    res.status(404).json('no user')
+  }
 
+})
+
+app.put('/image', (req, res) => {
+  
+  const {id} = req.body;
+  let found = false;
+
+  database.users.forEach(user => {
+    if (user.id === id) {
+      found = true;
+      user.entries++
+      return res.json(user.entries);
+    }
+  })
 })
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
