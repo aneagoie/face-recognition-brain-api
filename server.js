@@ -4,15 +4,20 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex')
 
+//Get this from knext documentation
 const db = knex({
   client: 'pg',
   connection: {
+    //This is localhost address
     host : '127.0.0.1',
-    user : 'aneagoie',
+    user : 'juan.gomez',
+    //We don't need password for now
     password : '',
     database : 'smart-brain'
   }
 });
+
+console.log(db.select('*').from('users'));
 
 const app = express();
 
