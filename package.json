@@ -10,14 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.2",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "knex": "^0.14.2",
-    "pg": "^7.4.0"
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.21.6",
+    "pg": "^8.3.3"
   },
   "devDependencies": {
-    "nodemon": "^1.12.7"
+    "nodemon": "^2.0.4"
   },
   "description": ""
 }
