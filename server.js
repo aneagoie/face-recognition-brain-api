@@ -15,9 +15,11 @@ const postgres = knex({
   }
 });
 
-console.log(postgres.select("*").from("users"));
+postgres.select("*").from("users").then(data => {
+console.log(data);
+});
 
-// Comment
+// Comment 55
 
 const app = express();
 
