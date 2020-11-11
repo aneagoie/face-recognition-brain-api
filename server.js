@@ -15,7 +15,7 @@ const postgres = knex({
   }
 });
 
-postgres.select("*").from("users");
+console.log(postgres.select("*").from("users"));
 
 // Comment
 
