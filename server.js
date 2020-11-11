@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex')
 
-const db = knex({
+const postgres = knex({
   // Enter your own database information here based on what you created
   client: 'pg',
   connection: {
@@ -14,6 +14,9 @@ const db = knex({
     database : 'smart-brain'
   }
 });
+
+postgres.select("*").from("users");
+
 
 const app = express();
 
