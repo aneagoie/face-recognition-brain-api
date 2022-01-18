@@ -13,7 +13,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "knex": "^0.95.11",
+    "knex": "^1.0.1",
     "pg": "^8.7.1"
   },
   "devDependencies": {
