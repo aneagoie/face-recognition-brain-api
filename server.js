@@ -15,15 +15,16 @@ const db = knex({
   }
 });
 
+
 const app = express();
 
 app.use(cors())
 app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
-
-app.get('/', (req, res)=> {
-  res.send(database.users);
-})
+// Test only - when you have a database variable you want to use
+// app.get('/', (req, res)=> {
+//   res.send(database.users);
+// })
 
 app.post('/signin', (req, res) => {
   db.select('email', 'hash').from('login')
