@@ -90,6 +90,7 @@ app.get('/profile/:id', (req, res) => {
 })
 
 app.put('/image', (req, res) => {
+  console.log('/image endpoint hit')
   const { id } = req.body;
   db('users').where('id', '=', id)
   .increment('entries', 1)
